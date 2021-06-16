@@ -87,6 +87,40 @@ fun LayoutsCodelab() {
 }
 
 @Composable
+fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
+    Row(modifier = modifier.height(IntrinsicSize.Min)) {
+        Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = 4.dp)
+                .wrapContentWidth(Alignment.Start),
+            text = text1
+        )
+
+        Divider(color = Color.Black, modifier = Modifier
+            .fillMaxHeight()
+            .width(1.dp))
+        Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 4.dp)
+                .wrapContentWidth(Alignment.End),
+            text = text2
+        )
+    }
+}
+
+@Preview
+@Composable
+fun TwoTextsPreview() {
+    LayoutComposeAppTheme {
+        Surface {
+            TwoTexts(text1 = "Hi", text2 = "there")
+        }
+    }
+}
+
+@Composable
 fun DecoupledConstraintLayout() {
     BoxWithConstraints {
         val constraints = if (maxWidth < maxHeight) {
@@ -122,7 +156,7 @@ private fun decoupledConstraints(margin: Dp): ConstraintSet {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun DecoupledConstraintLayoutPreview() {
     LayoutComposeAppTheme {
@@ -146,7 +180,7 @@ fun LargeConstraintLayout() {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun LargeConstraintLayoutPreview() {
     LayoutComposeAppTheme {
@@ -188,7 +222,7 @@ fun ConstraintLayoutContent() {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun ConstraintLayoutContentPreview() {
     LayoutComposeAppTheme {
@@ -241,7 +275,7 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun ChipPreview() {
     LayoutComposeAppTheme {
