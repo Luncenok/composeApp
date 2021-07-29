@@ -15,6 +15,7 @@ class TopAppBarTest {
 
     @Test
     fun rallyTopAppBarTest() {
+
         val allScreens = RallyScreen.values().toList()
         composeTestRule.setContent {
             RallyTheme {
@@ -28,6 +29,24 @@ class TopAppBarTest {
         composeTestRule
             .onNodeWithContentDescription(RallyScreen.Accounts.name)
             .assertIsSelected()
+    }
+
+    @Test
+    fun rallyTopAppBarTest_currentLabelExists() {
+        val allScreens = RallyScreen.values().toList()
+        composeTestRule.setContent {
+            RallyTheme {
+                RallyTopAppBar(
+                    allScreens = allScreens,
+                    onTabSelected = { },
+                    currentScreen = RallyScreen.Accounts
+                )
+            }
+        }
+
+        composeTestRule
+            .onNodeWithContentDescription(RallyScreen.Accounts.name)
+            .assertExists()
     }
 
 }
