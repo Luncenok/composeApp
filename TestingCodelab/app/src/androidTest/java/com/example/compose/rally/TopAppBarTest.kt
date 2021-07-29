@@ -31,6 +31,16 @@ class TopAppBarTest {
     }
 
     @Test
+    fun rallyTopAppBarTest_changesSelection() {
+        composeTestRule.setContent {
+            RallyApp()
+        }
+
+        composeTestRule.onNodeWithContentDescription("Bills").performClick().assertIsSelected()
+
+    }
+
+    @Test
     fun rallyTopAppBarTest_currentLabelExists() {
         val allScreens = RallyScreen.values().toList()
         composeTestRule.setContent {
