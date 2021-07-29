@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import androidx.navigation.navDeepLink
 import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.accounts.AccountsBody
 import com.example.compose.rally.ui.accounts.SingleAccountBody
@@ -93,7 +94,10 @@ fun RallyApp() {
                             // Make argument type safe
                             type = NavType.StringType
                         }
-                    )
+                    ),
+                    deepLinks = listOf(navDeepLink {
+                        uriPattern = "rally://$accountsName/{name}"
+                    })
                 ) { entry ->
                     val accountName = entry.arguments?.getString("name")
                     // Find first name match in UserData
